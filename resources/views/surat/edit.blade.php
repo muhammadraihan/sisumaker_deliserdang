@@ -31,7 +31,7 @@
                     </div>
                     {!! Form::open(['route' => ['surat.update',$surat->uuid],'method' => 'PUT','class' =>
                     'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
-                    @hasrole('superadmin')
+                    @hasrole('superadmin|tatausaha')
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('jenis_surat','Jenis Surat',['class' => 'required form-label'])}}
                         {!! Form::select('jenis_surat', array('undangan' => 'Undangan', 'audiensi' => 'Audiensi', 'suratmasuk' => 'Surat Masuk'), $surat->jenis_surat,
@@ -79,7 +79,7 @@
                     </div>  
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('sifat_surat','Sifat Surat',['class' => 'required form-label'])}}
-                        {!! Form::select('sifat_surat', array('biasa' => 'Biasa', 'segera' => 'Segera'), $surat->sifat_surat,
+                        {!! Form::select('sifat_surat', array('biasa' => 'Biasa', 'segera' => 'Segera', 'penting' => 'Penting', 'rahasia' => 'Rahasia'), $surat->sifat_surat,
                         ['id'=>'sifat_surat','class'
                         => 'custom-select'.($errors->has('sifat_surat') ? 'is-invalid':''), 'required'
                         => '', 'placeholder' => 'Pilih Sifat Surat ...']) !!}

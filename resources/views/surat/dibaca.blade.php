@@ -8,6 +8,15 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" media="screen, print"
     href="{{asset('css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css')}}">
+@hasrole('bupati')
+<meta http-equiv="refresh" content="30">
+@endhasrole
+@hasrole('superadmin|tatausaha')
+<meta http-equiv="refresh" content="180">
+@endhasrole
+@hasrole('sekda')
+<meta http-equiv="refresh" content="60">
+@endhasrole
 @endsection
 
 @section('content')
@@ -35,13 +44,13 @@
                 <div class="panel-content">
                     <div class="form-row">
                         <div class="form-group col-md-3 mb-3">
-                            <label>Dari tanggal</label>
-                            <input type="text" class="form-control js-bg-target" placeholder="Tahun" id="start_date"
+                            {{-- <label>Dari tanggal</label> --}}
+                            <input type="text" class="form-control js-bg-target" placeholder="Dari Tanggal" id="start_date"
                                 name="start_date" autocomplete="off">
                         </div>
                         <div id="" class="form-group col-md-3 mb-3">
-                            <label>Sampai tanggal</label>
-                            <input type="text" class="form-control js-bg-target" placeholder="Bulan" id="end_date"
+                            {{-- <label>Sampai tanggal</label> --}}
+                            <input type="text" class="form-control js-bg-target" placeholder="Sampai Tanggal" id="end_date"
                                 name="end_date" autocomplete="off">
                         </div>
                         <div id="" class="form-group col-md-5 mb-3">
@@ -51,7 +60,7 @@
                                 disabled="disabled">Reset</button>
                         </div>
                     <!-- datatable start -->
-                    @hasrole('superadmin')
+                    @hasrole('superadmin|tatausaha')
                     <table id="datatable" class="table table-bordered table-hover table-striped w-100">
                         <thead>
                             <tr>
@@ -106,6 +115,7 @@
                                 <th>Disposisi Sekda</th>
                                 <th>Tanggal Disposisi</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -251,6 +261,7 @@
             {data: 'disposisi', name: 'disposisi'},
             {data: 'tgl_disposisi', name: 'tgl_disposisi'},
             {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 
@@ -281,16 +292,21 @@
             var start_date = $('#start_date').val();
             var end_date = $('#end_date').val();
 
+            if(start_date == '' || end_date == ''){
+               alert("Tanggal tidak boleh kosong !");
+               return;
+            }
+
             $('#datatable').DataTable({
             "destroy": true,
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "searching": false,
+            // "searching": false,
             "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
-                url:'{{route('get.filter')}}',
+                url:'{{route('get.filterBaca')}}',
                 type : "GET",
                 data: {
                        start_date: start_date,
@@ -325,11 +341,11 @@
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "searching": false,
+            // "searching": false,
             "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
-                url:'{{route('get.filter')}}',
+                url:'{{route('get.filterBaca')}}',
                 type : "GET",
                 data: {
                        start_date: start_date,
@@ -360,11 +376,11 @@
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "searching": false,
+            // "searching": false,
             "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
-                url:'{{route('get.filter')}}',
+                url:'{{route('get.filterBaca')}}',
                 type : "GET",
                 data: {
                        start_date: start_date,
@@ -387,6 +403,7 @@
             {data: 'disposisi', name: 'disposisi'},
             {data: 'tgl_disposisi', name: 'tgl_disposisi'},
             {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 });
@@ -402,7 +419,7 @@ $('#resetFilter').click(function(e){
                 "processing": true,
                 "serverSide": true,
                 "responsive": true,
-                "searching": false,
+                // "searching": false,
                 "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
@@ -489,6 +506,7 @@ $('#resetFilter').click(function(e){
             {data: 'disposisi', name: 'disposisi'},
             {data: 'tgl_disposisi', name: 'tgl_disposisi'},
             {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 });

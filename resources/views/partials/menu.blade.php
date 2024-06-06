@@ -16,6 +16,7 @@
         @endhasrole
        
     </li>
+    @hasrole('superadmin')
     @isset($menu)
     @foreach ($menu as $parent_menu)
     <li class="">
@@ -32,4 +33,5 @@
     </li>
     @endforeach
     @endisset
+    @endhasrole
 </ul>

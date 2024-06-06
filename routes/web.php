@@ -41,6 +41,8 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function () {
     Route::resource('roles', 'RoleController');
     Route::resource('surat','SuratController');
     Route::get('dibaca', 'SuratController@dibaca')->name('get.dibaca');
-    Route::get('filter', 'SuratController@filter')->name('get.filter');
+    Route::get('filter', 'SuratController@filterBelumBaca')->name('get.filter');
+    Route::get('filterBaca', 'SuratController@filterSudahBaca')->name('get.filterBaca');
     Route::get('/download/{uuid}', 'SuratController@download')->name('get.download');
+    Route::get('/view/{uuid}', 'SuratController@view')->name('get.view');
 });

@@ -37,7 +37,13 @@ class SuratController extends Controller
                             return '<span class="badge badge-primary">Biasa</span>';
                             break;
                         case 'segera' :
-                            return '<span class="badge badge-danger">Segera</span>';
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
                             break;
                     }
                 })
@@ -80,7 +86,8 @@ class SuratController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return '
-                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>';
+                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -98,7 +105,13 @@ class SuratController extends Controller
                         return '<span class="badge badge-primary">Biasa</span>';
                         break;
                     case 'segera' :
-                        return '<span class="badge badge-danger">Segera</span>';
+                        return '<span class="badge badge-info">Segera</span>';
+                        break;
+                    case 'penting' :
+                        return '<span class="badge badge-warning">Penting</span>';
+                        break;
+                    case 'rahasia' :
+                        return '<span class="badge badge-danger">Rahasia</span>';
                         break;
                 }
             })
@@ -140,7 +153,8 @@ class SuratController extends Controller
                 return $row->userCreate->name;
             })
             ->addColumn('action', function ($row) {
-                ;
+                return '
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
             })
             ->removeColumn('id')
             ->removeColumn('uuid')
@@ -157,7 +171,13 @@ class SuratController extends Controller
                             return '<span class="badge badge-primary">Biasa</span>';
                             break;
                         case 'segera' :
-                            return '<span class="badge badge-danger">Segera</span>';
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
                             break;
                     }
                 })
@@ -202,7 +222,8 @@ class SuratController extends Controller
                     return '
                             <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm btn-icon waves-effect waves-themed delete-btn" data-url="' . URL::route('surat.destroy', $row->uuid) . '" data-id="' . $row->uuid . '" data-token="' . csrf_token() . '" data-toggle="modal" data-target="#modal-delete"><i class="fal fa-trash-alt"></i></a>
-                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>';
+                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -229,7 +250,13 @@ class SuratController extends Controller
                             return '<span class="badge badge-primary">Biasa</span>';
                             break;
                         case 'segera' :
-                            return '<span class="badge badge-danger">Segera</span>';
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
                             break;
                     }
                 })
@@ -272,7 +299,8 @@ class SuratController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return '
-                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>';
+                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -290,7 +318,13 @@ class SuratController extends Controller
                         return '<span class="badge badge-primary">Biasa</span>';
                         break;
                     case 'segera' :
-                        return '<span class="badge badge-danger">Segera</span>';
+                        return '<span class="badge badge-info">Segera</span>';
+                        break;
+                    case 'penting' :
+                        return '<span class="badge badge-warning">Penting</span>';
+                        break;
+                    case 'rahasia' :
+                        return '<span class="badge badge-danger">Rahasia</span>';
                         break;
                 }
             })
@@ -332,7 +366,8 @@ class SuratController extends Controller
                 return $row->userCreate->name;
             })
             ->addColumn('action', function ($row) {
-                ;
+                return '
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
             })
             ->removeColumn('id')
             ->removeColumn('uuid')
@@ -349,7 +384,13 @@ class SuratController extends Controller
                             return '<span class="badge badge-primary">Biasa</span>';
                             break;
                         case 'segera' :
-                            return '<span class="badge badge-danger">Segera</span>';
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
                             break;
                     }
                 })
@@ -394,7 +435,8 @@ class SuratController extends Controller
                     return '
                             <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm btn-icon waves-effect waves-themed delete-btn" data-url="' . URL::route('surat.destroy', $row->uuid) . '" data-id="' . $row->uuid . '" data-token="' . csrf_token() . '" data-toggle="modal" data-target="#modal-delete"><i class="fal fa-trash-alt"></i></a>
-                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>';
+                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -405,9 +447,10 @@ class SuratController extends Controller
         return view('surat.dibaca');
     }
 
-    public function filter (Request $request)
+    public function filterBelumBaca (Request $request)
     {
-        $myDate = Surat::whereBetween('tgl_surat', array($request->get('start_date'), $request->get('end_date')))->get();
+        $myDate = Surat::whereBetween('tgl_surat', array($request->get('start_date'), $request->get('end_date')))
+                    ->where('status', '=', 1)->get();
 
         $user = Auth::user();
             $roles = $user->getRoleNames();
@@ -422,7 +465,13 @@ class SuratController extends Controller
                             return '<span class="badge badge-primary">Biasa</span>';
                             break;
                         case 'segera' :
-                            return '<span class="badge badge-danger">Segera</span>';
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
                             break;
                     }
                 })
@@ -462,7 +511,8 @@ class SuratController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return '
-                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>';
+                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -479,7 +529,13 @@ class SuratController extends Controller
                             return '<span class="badge badge-primary">Biasa</span>';
                             break;
                         case 'segera' :
-                            return '<span class="badge badge-danger">Segera</span>';
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
                             break;
                     }
                 })
@@ -521,7 +577,147 @@ class SuratController extends Controller
                     return '
                             <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm btn-icon waves-effect waves-themed delete-btn" data-url="' . URL::route('surat.destroy', $row->uuid) . '" data-id="' . $row->uuid . '" data-token="' . csrf_token() . '" data-toggle="modal" data-target="#modal-delete"><i class="fal fa-trash-alt"></i></a>
-                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>';
+                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
+                })
+                ->removeColumn('id')
+                ->removeColumn('uuid')
+                ->rawColumns(['action','sifat_surat','status'])
+                ->make(true);
+        }
+
+        public function filterSudahBaca (Request $request)
+    {
+        $myDate = Surat::whereBetween('tgl_surat', array($request->get('start_date'), $request->get('end_date')))
+                    ->where('status', '=', 2)->get();
+
+        $user = Auth::user();
+            $roles = $user->getRoleNames();
+            if ($roles[0] == "sekda") {
+                $surat = Surat::all();
+
+            return Datatables::of($myDate)
+                ->addIndexColumn()
+                ->editColumn('sifat_surat', function($row){
+                    switch ($row->sifat_surat) {
+                        case 'biasa' :
+                            return '<span class="badge badge-primary">Biasa</span>';
+                            break;
+                        case 'segera' :
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
+                            break;
+                    }
+                })
+                ->editColumn('status', function($row){
+                    switch ($row->status) {
+                        case '1' :
+                            return '<span class="badge badge-warning">Belum di Baca</span>';
+                            break;
+                        case '2' :
+                            return '<span class="badge badge-secondary">Sudah Dibaca</span>';
+                            break;
+                    }
+                })
+                ->editColumn('tgl_surat', function ($row) {
+                    return Carbon::parse($row->tgl_surat)->translatedFormat('d M Y');
+                })
+                ->editColumn('tgl_acara', function ($row) {
+                    if ($row->tgl_acara == null){
+                        return Carbon::make(null);
+                    }
+                    return Carbon::parse($row->tgl_acara)->translatedFormat('d M Y');
+                })
+                ->editColumn('tgl_sampai', function ($row) {
+                    if ($row->tgl_sampai == null){
+                        return Carbon::make(null);
+                    }
+                    return Carbon::parse($row->tgl_sampai)->translatedFormat('d M Y');
+                })
+                ->editColumn('tgl_disposisi', function ($row) {
+                    if ($row->tgl_disposisi == null){
+                        return Carbon::make(null);
+                    }
+                    return Carbon::parse($row->tgl_disposisi)->translatedFormat('d M Y');
+                })
+                ->editColumn('created_by', function($row){
+                    return $row->userCreate->name;
+                })
+                ->addColumn('action', function ($row) {
+                    return '
+                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
+                })
+                ->removeColumn('id')
+                ->removeColumn('uuid')
+                ->rawColumns(['action','sifat_surat','status'])
+                ->make(true);
+        }
+        $surat = Surat::all();
+
+            return Datatables::of($myDate)
+                ->addIndexColumn()
+                ->editColumn('sifat_surat', function($row){
+                    switch ($row->sifat_surat) {
+                        case 'biasa' :
+                            return '<span class="badge badge-primary">Biasa</span>';
+                            break;
+                        case 'segera' :
+                            return '<span class="badge badge-info">Segera</span>';
+                            break;
+                        case 'penting' :
+                            return '<span class="badge badge-warning">Penting</span>';
+                            break;
+                        case 'rahasia' :
+                            return '<span class="badge badge-danger">Rahasia</span>';
+                            break;
+                    }
+                })
+                ->editColumn('status', function($row){
+                    switch ($row->status) {
+                        case '1' :
+                            return '<span class="badge badge-warning">Belum di Baca</span>';
+                            break;
+                        case '2' :
+                            return '<span class="badge badge-secondary">Sudah Dibaca</span>';
+                            break;
+                    }
+                })
+                ->editColumn('tgl_surat', function ($row) {
+                    return Carbon::parse($row->tgl_surat)->translatedFormat('d M Y');
+                })
+                ->editColumn('tgl_acara', function ($row) {
+                    if ($row->tgl_acara == null){
+                        return Carbon::make(null);
+                    }
+                    return Carbon::parse($row->tgl_acara)->translatedFormat('d M Y');
+                })
+                ->editColumn('tgl_sampai', function ($row) {
+                    if ($row->tgl_sampai == null){
+                        return Carbon::make(null);
+                    }
+                    return Carbon::parse($row->tgl_sampai)->translatedFormat('d M Y');
+                })
+                ->editColumn('tgl_disposisi', function ($row) {
+                    if ($row->tgl_disposisi == null){
+                        return Carbon::make(null);
+                    }
+                    return Carbon::parse($row->tgl_disposisi)->translatedFormat('d M Y');
+                })
+                ->editColumn('created_by', function($row){
+                    return $row->userCreate->name;
+                })
+                ->addColumn('action', function ($row) {
+                    return '
+                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('surat.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm btn-icon waves-effect waves-themed delete-btn" data-url="' . URL::route('surat.destroy', $row->uuid) . '" data-id="' . $row->uuid . '" data-token="' . csrf_token() . '" data-toggle="modal" data-target="#modal-delete"><i class="fal fa-trash-alt"></i></a>
+                            <a class="btn btn-primary btn-sm btn-icon waves-effect waves-themed" href="' . route('get.download', $row->uuid) . '"><i class="fal fa-print"></i></a>
+                            <a class="btn btn-warning btn-sm btn-icon waves-effect waves-themed" href="' . route('get.view', $row->uuid) . '"><i class="fal fa-info"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -563,7 +759,6 @@ class SuratController extends Controller
         ];
 
         $this->validate($request, $rules, $messages);
-        // dd($request->all());
 
         $surat = new Surat();
         $surat->jenis_surat = $request->jenis_surat;
@@ -580,7 +775,8 @@ class SuratController extends Controller
 
         if ($image = $request->file('surat')) {
             $destinationPath = 'surat/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            // $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = $request->file('surat')->getClientOriginalName();
             $image->move($destinationPath, $profileImage);
             $surat->surat = "$profileImage";
         }
@@ -652,10 +848,12 @@ class SuratController extends Controller
             // save the new image
             $image = $request->file('surat');
             $destinationPath = 'surat/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            // $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = $request->file('surat')->getClientOriginalName();
             $image->move($destinationPath, $profileImage);
             $surat->surat = "$profileImage";
         }
+
         $surat->jenis_surat = $request->jenis_surat;
         $surat->asal_surat = $request->asal_surat;
         $surat->tgl_surat = $request->tgl_surat;
@@ -705,7 +903,20 @@ class SuratController extends Controller
                 'Content-Type: application/pdf',
                 );
 
-        return Response::download($file, 'Surat.pdf', $headers);
+        return Response::download($file, $surat->surat, $headers);
+
+    }
+
+    public function view(Request $request, $id)
+    {
+        $surat = Surat::uuid($id);
+        $file= public_path('surat/'.$surat->surat);
+
+        $headers = array(
+                'Content-Type: application/pdf',
+                );
+
+        return response()->file($file, $headers);
 
     }
 }

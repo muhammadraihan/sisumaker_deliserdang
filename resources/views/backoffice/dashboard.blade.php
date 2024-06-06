@@ -16,12 +16,7 @@
         Hi {{Auth::user()->name}},
     </h3>
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet. Venenatis urna cursus eget nunc scelerisque
-        viverra mauris. At in tellus integer feugiat scelerisque. Eu sem integer vitae justo eget magna. Volutpat
-        blandit aliquam etiam erat velit scelerisque in. Amet luctus venenatis lectus magna fringilla. Non tellus orci
-        ac auctor augue mauris. Egestas fringilla phasellus faucibus scelerisque eleifend donec. Elit duis tristique
-        sollicitudin nibh sit amet.
+        Sistem Sekretariat Sisumaker Deli Serdang.
     </p>
     <p>
         Sincerely,<br>

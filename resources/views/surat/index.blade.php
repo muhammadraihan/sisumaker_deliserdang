@@ -8,6 +8,15 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" media="screen, print"
     href="{{asset('css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css')}}">
+@hasrole('bupati')
+<meta http-equiv="refresh" content="30">
+@endhasrole
+@hasrole('superadmin|tatausaha')
+<meta http-equiv="refresh" content="180">
+@endhasrole
+@hasrole('sekda')
+<meta http-equiv="refresh" content="60">
+@endhasrole
 @endsection
 
 @section('content')
@@ -27,7 +36,7 @@
                     Surat  <span class="fw-300"><i>List</i></span>
                 </h2>
                 <div class="panel-toolbar">
-                    @unlessrole('bupati')
+                    @unlessrole('bupati|sekda')
                     <a class="nav-link active" href="{{route('surat.create')}}"><i class="fal fa-plus-circle">
                         </i>
                         <span class="nav-link-text">Add New</span>
@@ -41,23 +50,24 @@
                 <div class="panel-content">
                     <div class="form-row">
                         <div class="form-group col-md-3 mb-3">
-                            <label>Dari tanggal</label>
-                            <input type="text" class="form-control js-bg-target" placeholder="Tahun" id="start_date"
-                                name="start_date" autocomplete="off">
+                            {{-- <label>Dari tanggal</label> --}}
+                            <input type="text" class="form-control js-bg-target" placeholder="Dari Tanggal" id="start_date"
+                                name="start_date" autocomplete="off" required>
                         </div>
-                        <div id="" class="form-group col-md-3 mb-3">
-                            <label>Sampai tanggal</label>
-                            <input type="text" class="form-control js-bg-target" placeholder="Bulan" id="end_date"
-                                name="end_date" autocomplete="off">
+                        <div class="form-group col-md-3 mb-3">
+                            {{-- <label>Sampai tanggal</label> --}}
+                            <input type="text" class="form-control js-bg-target" placeholder="Sampai Tanggal" id="end_date"
+                                name="end_date" autocomplete="off" required>
                         </div>
-                        <div id="" class="form-group col-md-5 mb-3">
+                        <div class="form-group col-md-5 mb-3">
                             <button type="button" name="filter" id="filter" class="btn btn-primary"
                                 disabled="disabled">Filter</button>
                             <button type="button" name="resetFilter" id="resetFilter" class="btn btn-primary"
                                 disabled="disabled">Reset</button>
                         </div>
+                    </div>
                     <!-- datatable start -->
-                    @hasrole('superadmin')
+                    @hasrole('superadmin|tatausaha')
                     <table id="datatable" class="table table-bordered table-hover table-striped w-100">
                         <thead>
                             <tr>
@@ -112,6 +122,7 @@
                                 <th>Disposisi Sekda</th>
                                 <th>Tanggal Disposisi</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -167,6 +178,7 @@
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
     });
+        
      
      
        var table = $('#datatable').DataTable({
@@ -257,6 +269,7 @@
             {data: 'disposisi', name: 'disposisi'},
             {data: 'tgl_disposisi', name: 'tgl_disposisi'},
             {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 
@@ -287,12 +300,17 @@
             var start_date = $('#start_date').val();
             var end_date = $('#end_date').val();
 
+            if(start_date == '' || end_date == ''){
+               alert("Tanggal tidak boleh kosong !");
+               return;
+            }
+
             $('#datatable').DataTable({
             "destroy": true,
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "searching": false,
+            // "searching": false,
             "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
@@ -331,7 +349,7 @@
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "searching": false,
+            // "searching": false,
             "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
@@ -366,7 +384,7 @@
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "searching": false,
+            // "searching": false,
             "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
@@ -393,6 +411,7 @@
             {data: 'disposisi', name: 'disposisi'},
             {data: 'tgl_disposisi', name: 'tgl_disposisi'},
             {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 });
@@ -408,7 +427,7 @@ $('#resetFilter').click(function(e){
                 "processing": true,
                 "serverSide": true,
                 "responsive": true,
-                "searching": false,
+                // "searching": false,
                 "pageLength" : 50,
             "order": [[ 0, "asc" ]],
             "ajax":{
@@ -495,6 +514,7 @@ $('#resetFilter').click(function(e){
             {data: 'disposisi', name: 'disposisi'},
             {data: 'tgl_disposisi', name: 'tgl_disposisi'},
             {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 });

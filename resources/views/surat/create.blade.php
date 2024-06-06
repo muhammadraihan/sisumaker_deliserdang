@@ -78,7 +78,7 @@
                     </div>  
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('sifat_surat','Sifat Surat',['class' => 'required form-label'])}}
-                        {!! Form::select('sifat_surat', array('biasa' => 'Biasa', 'segera' => 'Segera'), '',
+                        {!! Form::select('sifat_surat', array('biasa' => 'Biasa', 'segera' => 'Segera', 'penting' => 'Penting', 'rahasia' => 'Rahasia'), '',
                         ['id'=>'sifat_surat','class'
                         => 'custom-select'.($errors->has('sifat_surat') ? 'is-invalid':''), 'required'
                         => '', 'placeholder' => 'Pilih Sifat Surat ...']) !!}
