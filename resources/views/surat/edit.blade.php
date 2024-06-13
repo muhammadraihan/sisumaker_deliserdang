@@ -16,7 +16,11 @@
             <div class="panel-hdr">
             <h2>Edit <span class="fw-300"><i>{{$surat->asal_surat}}</i></span></h2>
                 <div class="panel-toolbar">
-                    <a class="nav-link active" href="{{route('surat.index')}}"><i class="fal fa-arrow-alt-left">
+                    @if ($surat->status == '1')
+                        <a class="nav-link active" href="{{route('surat.index')}}"><i class="fal fa-arrow-alt-left">
+                    @elseif ($surat->status == '2')
+                        <a class="nav-link active" href="{{route('get.dibaca')}}"><i class="fal fa-arrow-alt-left">
+                    @endif
                         </i>
                         <span class="nav-link-text">Back</span>
                     </a>
@@ -104,6 +108,13 @@
                     <div class="form-group col-md-4 mb-3">
                      {{ Form::label('surat','File harus berbentuk PDF !',['class' => 'required form-label'])}}
                     </div>
+                    <div class="form-group col-md-4 mb-3" hidden>
+                        {{ Form::label('disposisi','Disposisi',['class' => 'required form-label'])}}
+                        {{ Form::textarea('disposisi', $surat->disposisi,['placeholder' => 'Disposisi','class' => 'form-control '.($errors->has('disposisi') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        @if ($errors->has('disposisi'))
+                        <div class="invalid-feedback">{{ $errors->first('disposisi') }}</div>
+                        @endif
+                    </div>  
                     @endhasrole
                     @hasrole('sekda')
                     <div class="form-group col-md-4 mb-3">

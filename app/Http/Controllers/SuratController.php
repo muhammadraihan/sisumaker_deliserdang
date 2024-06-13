@@ -862,6 +862,11 @@ class SuratController extends Controller
         $surat->tgl_sampai = $request->tgl_sampai;
         $surat->sifat_surat = $request->sifat_surat;
         $surat->disposisi = $request->disposisi;
+        if($surat->status == 1){
+            $route = 'surat.index';
+        }else{
+            $route = 'get.dibaca';
+        }
         if(!empty($surat->disposisi)){
             $surat->status = 2;
         }
@@ -872,7 +877,7 @@ class SuratController extends Controller
         $surat->save();
 
         toastr()->success('Surat Baru Di Edit', 'Success');
-        return redirect()->route('surat.index');
+        return redirect()->route($route);
     }
 
     /**
