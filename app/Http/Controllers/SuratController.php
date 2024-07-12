@@ -762,11 +762,12 @@ class SuratController extends Controller
 
         $surat = new Surat();
         $surat->jenis_surat = $request->jenis_surat;
+        $surat->nomor_surat = $request->nomor_surat;
         $surat->asal_surat = $request->asal_surat;
         $surat->tgl_surat = $request->tgl_surat;
         $surat->perihal = $request->perihal;
-        $surat->tgl_acara = $request->tgl_acara;
-        $surat->tgl_sampai = $request->tgl_sampai;
+        // $surat->tgl_acara = $request->tgl_acara;
+        // $surat->tgl_sampai = $request->tgl_sampai;
         $surat->sifat_surat = $request->sifat_surat;
         $surat->surat = $request->surat;
         $surat->disposisi = $request->disposisi;
@@ -776,7 +777,15 @@ class SuratController extends Controller
         if ($image = $request->file('surat')) {
             $destinationPath = 'surat/';
             // $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $profileImage = $request->file('surat')->getClientOriginalName();
+            // $profileImage = $request->file('surat')->getClientOriginalName();
+            $fileName = $image->getClientOriginalName();
+
+            if (file_exists(public_path($destinationPath . $fileName))) {
+                toastr()->error('Surat dengan filename tersebut sudah ada!', 'Error');
+                return redirect()->back()->withInput()->with('error', 'Surat dengan filename tersebut sudah ada!');
+            }
+
+            $profileImage = date('YmdHis') . "_" . $image->getClientOriginalName();
             $image->move($destinationPath, $profileImage);
             $surat->surat = "$profileImage";
         }
@@ -842,24 +851,26 @@ class SuratController extends Controller
         
             if($oldImage = $surat->surat) {
         
-                unlink(public_path('surat/') . $oldImage);
+                @unlink(public_path('surat/') . $oldImage);
             }
         
             // save the new image
             $image = $request->file('surat');
             $destinationPath = 'surat/';
             // $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $profileImage = $request->file('surat')->getClientOriginalName();
+            // $profileImage = $request->file('surat')->getClientOriginalName();
+            $profileImage = date('YmdHis') . "_" . $image->getClientOriginalName();
             $image->move($destinationPath, $profileImage);
             $surat->surat = "$profileImage";
         }
 
         $surat->jenis_surat = $request->jenis_surat;
+        $surat->nomor_surat = $request->nomor_surat;
         $surat->asal_surat = $request->asal_surat;
         $surat->tgl_surat = $request->tgl_surat;
         $surat->perihal = $request->perihal;
-        $surat->tgl_acara = $request->tgl_acara;
-        $surat->tgl_sampai = $request->tgl_sampai;
+        // $surat->tgl_acara = $request->tgl_acara;
+        // $surat->tgl_sampai = $request->tgl_sampai;
         $surat->sifat_surat = $request->sifat_surat;
         $surat->disposisi = $request->disposisi;
         if($surat->status == 1){
@@ -891,7 +902,7 @@ class SuratController extends Controller
         $surat = Surat::uuid($id);
         $file = public_path('surat/').$surat->surat;
         if(file_exists($file)){
-            unlink($file);
+            @unlink($file);
         }
         $surat->delete();
         toastr()->success('Surat Berhasil di Hapus', 'Success');
@@ -916,6 +927,10 @@ class SuratController extends Controller
     {
         $surat = Surat::uuid($id);
         $file= public_path('surat/'.$surat->surat);
+
+        if (!file_exists($file)) {
+            return redirect()->back()->with('error', 'File tidak ditemukan.');
+        }
 
         $headers = array(
                 'Content-Type: application/pdf',

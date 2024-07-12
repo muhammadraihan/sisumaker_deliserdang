@@ -12,7 +12,7 @@ class Surat extends Model
     use Uuid;
 
     protected $fillable = [
-        'jenis_surat', 'asal_surat', 'tgl_surat', 'tgl_sampai','perihal', 'tgl_acara', 'sifat_surat', 'surat', 'lampiran', 'disposisi', 'tgl_disposisi','created_by', 'edited_by'
+        'jenis_surat', 'nomor_surat', 'asal_surat', 'tgl_surat', 'tgl_sampai','perihal', 'tgl_acara', 'sifat_surat', 'surat', 'lampiran', 'disposisi', 'tgl_disposisi','created_by', 'edited_by'
     ];
 
     public function userCreate() {

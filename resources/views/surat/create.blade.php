@@ -42,6 +42,13 @@
                         @endif
                     </div>
                     <div class="form-group col-md-4 mb-3">
+                        {{ Form::label('nomor_surat','Nomor Surat',['class' => 'required form-label'])}}
+                        {{ Form::text('nomor_surat',null,['placeholder' => 'Nomor surat','class' => 'nomor_surat form-control '.($errors->has('nomor_surat') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        @if ($errors->has('nomor_surat'))
+                        <div class="invalid-feedback">{{ $errors->first('nomor_surat') }}</div>
+                        @endif
+                    </div>  
+                    <div class="form-group col-md-4 mb-3">
                         {{ Form::label('asal_surat','Asal Surat',['class' => 'required form-label'])}}
                         {{ Form::text('asal_surat',null,['placeholder' => 'Asal surat','class' => 'asal_surat form-control '.($errors->has('asal_surat') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('asal_surat'))
@@ -62,7 +69,7 @@
                         <div class="invalid-feedback">{{ $errors->first('perihal') }}</div>
                         @endif
                     </div>                         
-                    <div class="form-group col-md-4 mb-3">
+                    {{-- <div class="form-group col-md-4 mb-3">
                         {{ Form::label('tgl_acara','Tanggal Acara',['class' => 'required form-label'])}}
                         {{ Form::text('tgl_acara',null,['placeholder' => 'Tanggal Acara','class' => 'tgl_acara form-control '.($errors->has('tgl_acara') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('tgl_acara'))
@@ -75,7 +82,7 @@
                         @if ($errors->has('tgl_sampai'))
                         <div class="invalid-feedback">{{ $errors->first('tgl_sampai') }}</div>
                         @endif
-                    </div>  
+                    </div>   --}}
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('sifat_surat','Sifat Surat',['class' => 'required form-label'])}}
                         {!! Form::select('sifat_surat', array('biasa' => 'Biasa', 'segera' => 'Segera', 'penting' => 'Penting', 'rahasia' => 'Rahasia'), '',

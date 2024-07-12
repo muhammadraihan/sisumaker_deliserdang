@@ -65,6 +65,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nomor Surat</th>
                                 <th>Asal Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Sifat Surat</th>
@@ -85,6 +86,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nomor Surat</th>
                                 <th>Asal Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Sifat Surat</th>
@@ -105,6 +107,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nomor Surat</th>
                                 <th>Asal Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Sifat Surat</th>
@@ -193,6 +196,7 @@
             ],
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -222,6 +226,7 @@
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -251,6 +256,7 @@
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -323,6 +329,7 @@
             ],
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -358,6 +365,7 @@
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -393,6 +401,7 @@
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -436,6 +445,7 @@ $('#resetFilter').click(function(e){
             ],
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -466,6 +476,7 @@ $('#resetFilter').click(function(e){
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
@@ -496,6 +507,7 @@ $('#resetFilter').click(function(e){
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nomor_surat', name: 'nomor_surat'},
             {data: 'asal_surat', name: 'asal_surat'},
             {data: 'tgl_surat', name: 'tgl_surat'},
             {data: 'sifat_surat', name: 'sifat_surat'},
